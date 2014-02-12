@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Logmon</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+    	var socket = io.connect('/');
+    	socket.on('appendLog', function(data) {
+    		console.log(data);
+    		var line = data.timestamp + ' ' + '<em>' + data.level + '</em>' + ' ' +
+    					'<font color=\'blue\'>' + data.message + '</font>';
+    		log_list.innerHTML += line + '<br />'
+    	});
+    </script>
+  </head>
+  <body>
+  	<div id="log_list"></div>
+  </body>
+</html>
