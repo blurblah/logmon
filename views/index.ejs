@@ -7,7 +7,7 @@
     	var socket = io.connect('/');
     	socket.on('appendLog', function(data) {
     		console.log(data);
-    		var line = data.timestamp + ' ' + '<em>' + data.level + '</em>' + ' ' +
+    		var line = '<em>' + data.level + '</em>' + ' ' +
     					'<font color=\'blue\'>' + data.message + '</font>';
     		log_list.innerHTML += line + '<br />'
     		window.scrollBy(0, screen.availHeight);
