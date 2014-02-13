@@ -6,12 +6,31 @@
     <script>
     	var socket = io.connect('/');
     	socket.on('appendLog', function(data) {
-    		console.log(data);
-    		var line = '<em>' + data.level + '</em>' + ' ' +
-    					'<font color=\'blue\'>' + data.message + '</font>';
+    		var line = '<em>' + data.level + '</em>' + ' ' + '<font color=\'' +
+    					getColor(data.level) + '\'>' + data.message + '</font>';
     		log_list.innerHTML += line + '<br />'
     		window.scrollBy(0, screen.availHeight);
     	});
+    	
+    	function getColor(level) {
+    		var color = 'blue';
+    		switch(level) {
+    		case 'error':
+    			color = 'red';
+    			break;
+    		case 'debug':
+    			color = 'green';
+    			break;
+    		case 'warning':
+    			color = 'orange';
+    			break;
+    		default:
+    			color = 'blue';
+    			break;
+    		}
+    		
+    		return color;
+    	}
     </script>
   </head>
   <body>
