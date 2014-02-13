@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Logmon</title>
+    <title>LogMon</title>
     <script src="/socket.io/socket.io.js"></script>
     <script>
     	var socket = io.connect('/');
@@ -10,10 +10,12 @@
     		var line = data.timestamp + ' ' + '<em>' + data.level + '</em>' + ' ' +
     					'<font color=\'blue\'>' + data.message + '</font>';
     		log_list.innerHTML += line + '<br />'
+    		window.scrollBy(0, screen.availHeight);
     	});
     </script>
   </head>
   <body>
+  	<h2><strong>LogMon</strong></h2>
   	<div id="log_list"></div>
   </body>
 </html>
