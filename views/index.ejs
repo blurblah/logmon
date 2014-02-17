@@ -12,13 +12,12 @@
     		var line = index + ' : <em>' + data.level + '</em>' + ' ' + '<font color=\'' +
     					getColor(data.level) + '\'>' + data.message + '</font>';
     		log_list.innerHTML += line + '<br />';
+    		window.scrollBy(0, screen.availHeight);
     		
     		if(index > limit) {
     			index = 0;
     			window.scrollTop();
     			log_list.innerHTML = '<font color=\'gray\'>Deprecated old logs...</font><br />';
-    		} else {
-    			window.scrollBy(0, screen.availHeight);
     		}
     	});
     	
