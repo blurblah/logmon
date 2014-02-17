@@ -11,14 +11,15 @@
     		index++;
     		var line = index + ' : <em>' + data.level + '</em>' + ' ' + '<font color=\'' +
     					getColor(data.level) + '\'>' + data.message + '</font>';
+    		log_list.innerHTML += line + '<br />';
+    		
     		if(index > limit) {
-    			log_list.innerHTML = line + '<br />';
+    			log_list.innerHTML = '';
     			index = 0;
     			window.scrollTop();
+    		} else {
+    			window.scrollBy(0, screen.availHeight);
     		}
-    		
-    		log_list.innerHTML += line + '<br />';
-    		window.scrollBy(0, screen.availHeight);
     	});
     	
     	function getColor(level) {
