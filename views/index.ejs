@@ -11,8 +11,10 @@
     	socket.on('appendLog', function(data) {
     		lineNum++;
     		index++;
+    		var message = data.message;
+    		if(!data.meta) message += ' ' + JSON.stringify(data.meta);
     		var line = lineNum + ' : <em>' + data.level + '</em>' + ' ' + '<font color=\'' +
-    					getColor(data.level) + '\'>' + data.message + '</font>';
+    					getColor(data.level) + '\'>' + message + '</font>';
     		log_list.innerHTML += line + '<br />';
     		window.scrollBy(0, screen.availHeight);
     		
