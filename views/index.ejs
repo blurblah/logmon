@@ -4,11 +4,20 @@
     <title>LogMon</title>
     <script src="/socket.io/socket.io.js"></script>
     <script>
+    	var index = 0;
+    	var limit = 1000;
     	var socket = io.connect('/');
     	socket.on('appendLog', function(data) {
-    		var line = '<em>' + data.level + '</em>' + ' ' + '<font color=\'' +
+    		index++;
+    		var line = index + ' : <em>' + data.level + '</em>' + ' ' + '<font color=\'' +
     					getColor(data.level) + '\'>' + data.message + '</font>';
-    		log_list.innerHTML += line + '<br />'
+    					
+    		if(index > limit) {
+    			log_list.innerHTML = line + '<br />';
+    			index = 0;
+    		}
+    		
+    		log_list.innerHTML += line + '<br />';
     		window.scrollBy(0, screen.availHeight);
     	});
     	
@@ -31,7 +40,7 @@
     		
     		return color;
     	}
-    </script>
+	</script>
   </head>
   <body>
   	<h2><strong>LogMon</strong></h2>
