@@ -4,17 +4,20 @@
     <title>LogMon</title>
     <script src="/socket.io/socket.io.js"></script>
     <script>
+    	var index = 0;
     	var lineNum = 0;
     	var limit = 200;
     	var socket = io.connect('/');
     	socket.on('appendLog', function(data) {
     		lineNum++;
+    		index++;
     		var line = lineNum + ' : <em>' + data.level + '</em>' + ' ' + '<font color=\'' +
     					getColor(data.level) + '\'>' + data.message + '</font>';
     		log_list.innerHTML += line + '<br />';
     		window.scrollBy(0, screen.availHeight);
     		
-    		if(lineNum > limit) {
+    		if(index > limit) {
+    			index = 0;
     			log_list.innerHTML = '<font color=\'gray\'>Deprecated old logs...</font><br />';
     			window.scrollTop();
     		}
