@@ -8,7 +8,7 @@
     	var limit = 300;
     	var socket = io.connect('/');
     	socket.on('appendLog', function(data) {
-    		//index++;
+    		index++;
     		var line = index + ' : <em>' + data.level + '</em>' + ' ' + '<font color=\'' +
     					getColor(data.level) + '\'>' + data.message + '</font>';
     		/*
