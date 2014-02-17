@@ -15,9 +15,10 @@
     		window.scrollBy(0, screen.availHeight);
     		
     		if(index > limit) {
+    			log_list.innertHTML = '';
     			index = 0;
     			window.scrollTop();
-    			log_list.innerHTML = '<font color=\'gray\'>Deprecated old logs...</font><br />';
+    			//log_list.innerHTML = '<font color=\'gray\'>Deprecated old logs...</font><br />';
     		}
     	});
     	
